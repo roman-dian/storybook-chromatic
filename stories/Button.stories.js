@@ -25,7 +25,7 @@ export default {
 export const Primary = {
   args: {
     primary: true,
-    label: 'Primary button',
+    label: 'Primary buttonssss',
     data: 'primary',
     'data-testid': 'primary-button'
   },
