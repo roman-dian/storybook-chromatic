@@ -1,4 +1,5 @@
-import { fn } from '@storybook/test';
+ 
+import { fn, userEvent, within, expect } from '@storybook/test';
 
 import { Button } from './Button';
 
@@ -24,26 +25,40 @@ export default {
 export const Primary = {
   args: {
     primary: true,
-    label: 'Button',
+    label: 'Primary button',
+    data: 'primary',
+    'data-testid': 'primary-button'
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByTestId('primary-button'));
+ 
+   
+    await expect(
+      canvas.getByText(
+        'Primary button',
+      ),
+    ).toBeInTheDocument();
+  },
+
 };
 
 export const Secondary = {
   args: {
-    label: 'Button',
+    label: 'Secondary button',
   },
 };
 
 export const Large = {
   args: {
-    size: 'large',
+    size: 'Large button',
     label: 'Button',
   },
 };
 
 export const Small = {
   args: {
-    size: 'small',
+    size: 'Small button',
     label: 'Button',
   },
 };
